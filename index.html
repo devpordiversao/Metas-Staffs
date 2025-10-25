@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metas da Staff</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            text-shadow: 0 0 30px rgba(102, 126, 234, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .header .subtitle {
+            font-size: 18px;
+            color: #b8b8d1;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        .header .icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
+            margin: 40px 0;
+        }
+
+        .section {
+            margin-bottom: 45px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateX(10px);
+            box-shadow: -10px 0 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title .emoji {
+            font-size: 35px;
+            filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.5));
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 18px;
+            color: #e0e0f0;
+            font-size: 16px;
+            line-height: 1.6;
+            padding-left: 10px;
+            position: relative;
+        }
+
+        .meta-item::before {
+            content: '▸';
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+
+        .bonus-section {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2), rgba(118, 75, 162, 0.2));
+            border-left-color: #f093fb;
+            border: 2px solid rgba(240, 147, 251, 0.3);
+        }
+
+        .bonus-section:hover {
+            box-shadow: 0 0 40px rgba(240, 147, 251, 0.3);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(102, 126, 234, 0.3);
+            color: #b8b8d1;
+            font-size: 14px;
+        }
+
+        .download-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6);
+        }
+
+        .icon-badge {
+            display: inline-block;
+            background: rgba(102, 126, 234, 0.2);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                background: white;
+            }
+            .download-btn {
+                display: none;
+            }
+            .section-title, .header h1 {
+                color: #333;
+                -webkit-text-fill-color: #333;
+            }
+            .meta-item {
+                color: #333;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="download-btn" onclick="window.print()">📥 Baixar PDF</button>
+    
+    <div class="container">
+        <div class="content">
+            <div class="header">
+                <div class="icon">💠</div>
+                <h1>METAS DA STAFF</h1>
+                <p class="subtitle">A força da equipe define o sucesso do servidor. ⚔️</p>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Tickets e Atendimento -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="emoji">🎫</span>
+                    <span>Tickets e Atendimento</span>
+                </div>
+                <div class="meta-item">Resolver mínimo 15 tickets por semana</div>
+                <div class="meta-item">Tempo médio de resposta: até 15 minutos</div>
+                <div class="meta-item">Encerrar tickets com resumo claro e organizado</div>
+                <div class="meta-item">Manter fila de tickets zerada ao final do turno</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Moderação -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="emoji">⚖️</span>
+                    <span>Moderação</span>
+                </div>
+                <div class="meta-item">Aplicar punições corretamente registradas</div>
+                <div class="meta-item">Manter 0 advertências internas</div>
+                <div class="meta-item">Verificar denúncias e logs diariamente</div>
+                <div class="meta-item">Evitar conflitos — agir com calma e profissionalismo</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Comunicação -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="emoji">📢</span>
+                    <span>Comunicação</span>
+                </div>
+                <div class="meta-item">Participar das reuniões semanais</div>
+                <div class="meta-item">Reportar bugs, erros e irregularidades</div>
+                <div class="meta-item">Dar feedbacks construtivos aos superiores</div>
+                <div class="meta-item">Manter boa convivência com toda a staff</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Atividade e Desempenho -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="emoji">🔮</span>
+                    <span>Atividade e Desempenho</span>
+                </div>
+                <div class="meta-item">Estar ativo ao menos 4 dias por semana</div>
+                <div class="meta-item">Ajudar novos staffs com dúvidas</div>
+                <div class="meta-item">Manter boa presença no chat e eventos</div>
+                <div class="meta-item">Representar o servidor com maturidade e respeito</div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Bônus - Staff Destaque -->
+            <div class="section bonus-section">
+                <div class="icon-badge">⭐ BÔNUS ESPECIAL</div>
+                <div class="section-title">
+                    <span class="emoji">🏅</span>
+                    <span>Staff Destaque</span>
+                </div>
+                <div class="meta-item">+20 tickets resolvidos no mês</div>
+                <div class="meta-item">Feedback positivo de 5+ membros</div>
+                <div class="meta-item">Nenhuma punição incorreta ou reclamação</div>
+                <div class="meta-item">Presença em todas as reuniões</div>
+            </div>
+
+            <div class="footer">
+                <p>💼 Staff Team | Atualizado em Outubro 2025</p>
+                <p style="margin-top: 10px; font-size: 12px;">Mantenha o compromisso, alcance a excelência. 🌟</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Adicionar animação de entrada
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    section.style.transition = 'all 0.5s ease';
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+                                     </html>
